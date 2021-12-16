@@ -1,9 +1,13 @@
+import React from 'react';
 import './app.css';
+import MakerHeader from './components/maker_header/maker_header';
 
-function App() {
+const App = () => {
   return (
-    <h1>test</h1>
+    <>
+      <MakerHeader />
+    </>
   );
-}
+};
 
 export default App;
