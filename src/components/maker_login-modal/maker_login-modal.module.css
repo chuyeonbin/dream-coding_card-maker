@@ -1,0 +1,49 @@
+@value makerGreen from '../../common/color.css';
+@value makerWhite from '../../common/color.css';
+@value makerShadow from '../../common/color.css';
+@value makerGrey from '../../common/color.css';
+@value medium from '../../common/size.css';
+
+.modal {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: makerGrey;
+}
+
+.modal_box {
+  width: 50%;
+}
+
+.form {
+  padding: 2em 0.5em;
+  text-align: center;
+  background-color: makerWhite;
+}
+
+.form h1 {
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.auth_button {
+  cursor: pointer;
+  margin-bottom: 0.6rem;
+  display: block;
+  width: 100%;
+  height: 35px;
+  font-size: medium;
+  background-color: makerWhite;
+  border: 2px solid makerGreen;
+  border-radius: 15px;
+  transition: transform 150ms ease-in;
+}
+
+.auth_button:hover {
+  transform: scale(1.03);
+}

@@ -1,1 +1,6 @@
 @value mediaQuery: 62rem;
+
+/* Font Size */
+@value small: 12px;
+@value medium: 18px;
+@value regular: 24px;
