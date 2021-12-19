@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './maker_footer.module.css';
+import styles from './footer.module.css';
 
-const MakerFooter = () => {
+const Footer = () => {
   return (
     <footer className={styles.footer}>
       <p className={styles.copyright}>Copyrightⓒ2021 by chuyeonbin</p>
@@ -9,4 +9,4 @@ const MakerFooter = () => {
   );
 };
 
-export default MakerFooter;
+export default Footer;

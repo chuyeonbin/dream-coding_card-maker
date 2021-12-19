@@ -1,5 +1,9 @@
 @value makerWhite from './common/color.css';
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   background-color: makerWhite;
