@@ -27,10 +27,9 @@ const LoginModal = ({ authService }) => {
 
   useEffect(() => {
     authService.onAuthChange(user => {
-      console.log(user);
       user && goToMaker(user.uid);
     });
-  }, []);
+  });
 
   return (
     <div className={styles.modal}>

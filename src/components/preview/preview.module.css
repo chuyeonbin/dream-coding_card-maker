@@ -1,0 +1,30 @@
+@value makerGreen from '../../common/color.css';
+@value makerWhite from '../../common/color.css';
+
+p,
+h3 {
+  margin: 0;
+}
+
+p {
+  margin-bottom: 0.4rem;
+  font-size: 14px;
+}
+.preview {
+  flex-basis: 50%;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  color: makerGreen;
+}
+
+.cards {
+  width: 100%;
+  height: 100%;
+  padding: 0.5em 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
