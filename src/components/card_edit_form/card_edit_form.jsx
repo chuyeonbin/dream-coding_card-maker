@@ -20,9 +20,9 @@ const CardEditForm = ({ card }) => {
         value={company}
       />
       <select className={styles.select} name="theme" value={theme}>
-        <option value="Light"></option>
-        <option value="Dark"></option>
-        <option value="Colorpul"></option>
+        <option value="light">light</option>
+        <option value="dark">dark</option>
+        <option value="colorpul">colorful</option>
       </select>
       <input className={styles.input} type="text" name="job" value={job} />
       <input className={styles.input} type="text" name="email" value={email} />
