@@ -46,9 +46,9 @@ const CardAddForm = ({ onAdd }) => {
         placeholder="Company"
       />
       <select ref={themeRef} className={styles.select} name="theme">
-        <option value="light">kight</option>
+        <option value="light">light</option>
         <option value="dark">dark</option>
-        <option value="colorpul">colorful</option>
+        <option value="colorful">colorful</option>
       </select>
       <input
         ref={jobRef}
