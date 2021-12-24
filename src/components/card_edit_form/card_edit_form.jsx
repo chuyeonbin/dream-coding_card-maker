@@ -1,14 +1,21 @@
-import React, { memo } from 'react';
+import React from 'react';
 import Button from '../button/button';
-import ImageFileInput from '../image_file_input/image_file_input';
 import styles from './card_edit_form.module.css';
 
-const CardEditForm = memo(({ card, deleteCard, updateCard }) => {
+const CardEditForm = ({ FileInput, card, deleteCard, updateCard }) => {
   const { theme, name, company, job, email, message, fileName, fileURL } = card;
 
-  const onSubmit = event => {
-    event.preventDefault();
+  const onSubmit = () => {
     deleteCard(card);
+  };
+
+  const onFileChange = file => {
+    console.log(card);
+    updateCard({
+      ...card,
+      fileName: file.name,
+      fileURL: file.url,
+    });
   };
 
   const onChange = event => {
@@ -72,11 +79,11 @@ const CardEditForm = memo(({ card, deleteCard, updateCard }) => {
         onChange={onChange}
       />
       <div className={styles.fileInput}>
-        <ImageFileInput />
+        <FileInput name={fileName} onFileChange={onFileChange} />
       </div>
       <Button name="Delete" onClick={onSubmit} />
     </form>
   );
-});
+};
 
 export default CardEditForm;

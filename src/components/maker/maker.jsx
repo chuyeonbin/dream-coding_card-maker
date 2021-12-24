@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from 'firebase/auth';
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { auth } from '../../service/firebase';
 import Editor from '../editor/editor';
@@ -8,7 +8,7 @@ import Header from '../header/header';
 import Preview from '../preview/preview';
 import styles from './maker.module.css';
 
-const Maker = () => {
+const Maker = ({ FileInput }) => {
   const [cards, setCards] = useState({
     0: {
       id: 0,
@@ -18,6 +18,8 @@ const Maker = () => {
       job: 'FrontEnd Enginner',
       email: 'cndusqls98@gmail.com',
       message: '안녕하세요 저는 프론트엔드 개발자입니다.',
+      fileName: null,
+      fileURL: null,
     },
     1: {
       id: 1,
@@ -27,6 +29,8 @@ const Maker = () => {
       job: 'Database Enginner',
       email: 'test@gmail.com',
       message: 'loremasdasdas ;zx,;asdasd',
+      fileName: null,
+      fileURL: null,
     },
     2: {
       id: 2,
@@ -36,6 +40,8 @@ const Maker = () => {
       job: 'Database Enginner',
       email: 'test@gmail.com',
       message: 'loremasdasdas ;zx,;asdasd',
+      fileName: null,
+      fileURL: null,
     },
     3: {
       id: 3,
@@ -45,6 +51,8 @@ const Maker = () => {
       job: 'Database Enginner',
       email: 'test@gmail.com',
       message: 'loremasdasdas ;zx,;asdasd',
+      fileName: null,
+      fileURL: null,
     },
   });
 
@@ -83,6 +91,7 @@ const Maker = () => {
       <Header onLogOut={onLogOut} />
       <div className={styles.container}>
         <Editor
+          FileInput={FileInput}
           cards={cards}
           addCard={createOrUpdateCard}
           deleteCard={deleteCard}

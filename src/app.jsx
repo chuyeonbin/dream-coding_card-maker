@@ -4,12 +4,12 @@ import './app.css';
 import LoginModal from './components/login-modal/login-modal';
 import Maker from './components/maker/maker';
 
-const App = ({ authService }) => {
+const App = ({ authService, FileInput }) => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LoginModal authService={authService} />} />
-        <Route path="/maker" element={<Maker />} />
+        <Route path="/maker" element={<Maker FileInput={FileInput} />} />
       </Routes>
     </BrowserRouter>
   );
