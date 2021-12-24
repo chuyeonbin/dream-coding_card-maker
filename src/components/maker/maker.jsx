@@ -1,6 +1,6 @@
 import { onAuthStateChanged } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { auth } from '../../service/firebase';
 import Editor from '../editor/editor';
 import Footer from '../footer/footer';
@@ -56,7 +56,6 @@ const Maker = ({ FileInput }) => {
     },
   });
 
-  const location = useLocation();
   const navigate = useNavigate();
   const onLogOut = () => {
     auth.signOut();
