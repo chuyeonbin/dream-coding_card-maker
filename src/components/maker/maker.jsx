@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { auth } from '../../service/firebase';
 import Editor from '../editor/editor';
 import Footer from '../footer/footer';
 import Header from '../header/header';
@@ -14,9 +13,9 @@ const Maker = ({ FileInput, database, authService }) => {
   const [userId, setUserId] = useState(location.state && location.state.id);
   const [cards, setCards] = useState({});
 
-  const onLogOut = () => {
-    auth.signOut();
-  };
+  const onLogOut = useCallback(() => {
+    authService.logout();
+  }, [authService]);
 
   useEffect(() => {
     if (!userId) {
@@ -38,23 +37,29 @@ const Maker = ({ FileInput, database, authService }) => {
     });
   }, [userId, navigate, authService]);
 
-  const createOrUpdateCard = card => {
-    setCards(cards => {
-      const updated = { ...cards };
-      updated[card.id] = card;
-      return updated;
-    });
-    database.setUserCard(location.state.id, card);
-  };
+  const createOrUpdateCard = useCallback(
+    card => {
+      setCards(cards => {
+        const updated = { ...cards };
+        updated[card.id] = card;
+        return updated;
+      });
+      database.setUserCard(userId, card);
+    },
+    [database, userId]
+  );
 
-  const deleteCard = card => {
-    setCards(cards => {
-      const updated = { ...cards };
-      delete updated[card.id];
-      return updated;
-    });
-    database.removeUserCard(userId, card);
-  };
+  const deleteCard = useCallback(
+    card => {
+      setCards(cards => {
+        const updated = { ...cards };
+        delete updated[card.id];
+        return updated;
+      });
+      database.removeUserCard(userId, card);
+    },
+    [database, userId]
+  );
 
   return (
     <section className={styles.maker}>
