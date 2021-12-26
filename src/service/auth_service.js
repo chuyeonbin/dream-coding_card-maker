@@ -7,7 +7,7 @@ import {
 } from 'firebase/auth';
 
 class AuthService {
-  login(providerName) {
+  async login(providerName) {
     let provider;
     switch (providerName) {
       case 'google':

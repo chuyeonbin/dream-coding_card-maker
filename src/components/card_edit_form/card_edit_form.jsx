@@ -4,13 +4,11 @@ import styles from './card_edit_form.module.css';
 
 const CardEditForm = ({ FileInput, card, deleteCard, updateCard }) => {
   const { theme, name, company, job, email, message, fileName } = card;
-
   const onSubmit = () => {
     deleteCard(card);
   };
 
   const onFileChange = file => {
-    console.log(card);
     updateCard({
       ...card,
       fileName: file.name,
@@ -38,20 +36,20 @@ const CardEditForm = ({ FileInput, card, deleteCard, updateCard }) => {
         className={styles.input}
         type="text"
         name="name"
-        defaultValue={name}
+        value={name}
         onChange={onChange}
       />
       <input
         className={styles.input}
         type="text"
         name="company"
-        defaultValue={company}
+        value={company}
         onChange={onChange}
       />
       <select
         className={styles.select}
         name="theme"
-        defaultValue={theme}
+        value={theme}
         onChange={onChange}
       >
         <option value="light">light</option>
@@ -62,20 +60,20 @@ const CardEditForm = ({ FileInput, card, deleteCard, updateCard }) => {
         className={styles.input}
         type="text"
         name="job"
-        defaultValue={job}
+        value={job}
         onChange={onChange}
       />
       <input
         className={styles.input}
         type="text"
         name="email"
-        defaultValue={email}
+        value={email}
         onChange={onChange}
       />
       <textarea
         className={styles.textarea}
         name="message"
-        defaultValue={message}
+        value={message}
         onChange={onChange}
       />
       <div className={styles.fileInput}>

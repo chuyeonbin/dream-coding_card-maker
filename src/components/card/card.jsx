@@ -5,6 +5,7 @@ const DEFAULT_IMAGE = '/images/default_logo.png';
 
 const Card = ({ card }) => {
   const { theme, name, company, job, email, message, fileURL } = card;
+
   const url = fileURL || DEFAULT_IMAGE;
   return (
     <li className={`${styles.card} ${getStyles(theme)}`}>
@@ -15,7 +16,7 @@ const Card = ({ card }) => {
         <hr className={styles.line} />
         <p className={styles.job}>{job}</p>
         <p className={styles.email}>{email}</p>
-        <p className={styles.message}>"{message}"</p>
+        <p className={styles.message}>{message}</p>
       </div>
     </li>
   );
