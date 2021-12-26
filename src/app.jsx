@@ -11,7 +11,13 @@ const App = ({ FileInput, database, authService }) => {
         <Route path="/" element={<LoginModal authService={authService} />} />
         <Route
           path="/maker"
-          element={<Maker database={database} FileInput={FileInput} />}
+          element={
+            <Maker
+              FileInput={FileInput}
+              database={database}
+              authService={authService}
+            />
+          }
         />
       </Routes>
     </BrowserRouter>

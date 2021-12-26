@@ -1,24 +1,9 @@
-import { auth } from './firebase';
-import {
-  GithubAuthProvider,
-  GoogleAuthProvider,
-  onAuthStateChanged,
-  signInWithPopup,
-} from 'firebase/auth';
+import { auth, googleProvider, githubProvider } from './firebase';
+import { onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 
 class AuthService {
   async login(providerName) {
-    let provider;
-    switch (providerName) {
-      case 'google':
-        provider = new GoogleAuthProvider();
-        break;
-      case 'github':
-        provider = new GithubAuthProvider();
-        break;
-      default:
-        throw new Error('not providerName');
-    }
+    const provider = this.getProvider(providerName);
     return signInWithPopup(auth, provider);
   }
 
@@ -26,6 +11,17 @@ class AuthService {
     onAuthStateChanged(auth, user => {
       onUserChanged(user);
     });
+  }
+
+  getProvider(providerName) {
+    switch (providerName) {
+      case 'google':
+        return googleProvider;
+      case 'github':
+        return githubProvider;
+      default:
+        throw new Error(`not providerName: ${providerName}`);
+    }
   }
 }
 

@@ -1,4 +1,3 @@
-import { onAuthStateChanged } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { auth } from '../../service/firebase';
@@ -8,7 +7,7 @@ import Header from '../header/header';
 import Preview from '../preview/preview';
 import styles from './maker.module.css';
 
-const Maker = ({ FileInput, database }) => {
+const Maker = ({ FileInput, database, authService }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -30,14 +29,14 @@ const Maker = ({ FileInput, database }) => {
   }, [userId, database]);
 
   useEffect(() => {
-    console.log(cards);
-    onAuthStateChanged(auth, user => {
-      if (!user) {
+    authService.onAuthChange(user => {
+      if (user) {
         setUserId(user.uid);
+      } else {
         navigate('/');
       }
     });
-  });
+  }, [userId, navigate, authService]);
 
   const createOrUpdateCard = card => {
     setCards(cards => {
